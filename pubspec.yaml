@@ -12,11 +12,11 @@ dependencies:
     sdk: flutter
 
 
-  cupertino_icons: ^1.0.6
+  cupertino_icons: ^1.0.8
   glassmorphism: ^3.0.0
-  flutter_svg: ^2.0.10+1
-  neumorphic_ui: ^1.0.1
-  model_viewer_plus: ^1.7.2
+  flutter_svg: ^2.0.14
+ # neumorphic_ui: ^1.0.1
+  model_viewer_plus: ^1.9.0
 
 dev_dependencies:
   flutter_test:

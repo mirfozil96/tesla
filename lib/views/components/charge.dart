@@ -1,5 +1,5 @@
 import 'dart:ui' as ui;
-import 'package:neumorphic_ui/neumorphic_ui.dart';
+import 'package:flutter/material.dart';
 
 void main() {
   runApp(const App());
@@ -140,8 +140,6 @@ class _ChargeState extends State<Charge> {
                   ],
                 ),
                 const SizedBox(height: 20),
-
-         
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: SizedBox(
@@ -215,7 +213,6 @@ class _ChargeState extends State<Charge> {
                       ),
                     ),
                     Expanded(
-             
                       child: Container(
                         width: MediaQuery.of(context).size.width * 0.65,
                         height: 30,
@@ -224,22 +221,33 @@ class _ChargeState extends State<Charge> {
                           children: [
                             Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
-                          
                                 children: [
                                   SizedBox(
                                     height: 20,
                                     width: MediaQuery.of(context).size.width *
                                         0.65,
-                                    child: Neumorphic(
-                                      style: NeumorphicStyle(
-                                        boxShape: NeumorphicBoxShape.roundRect(
-                                          BorderRadius.circular(20),
-                                        ),
-                                        depth: -9,
+                                    child: Container(
+                                      decoration: BoxDecoration(
                                         color: const Color(0xFF1C1D20),
-                                        shadowLightColorEmboss:
-                                            Colors.white.withOpacity(0.5),
-                                        shadowDarkColorEmboss: Colors.black,
+                                        borderRadius: BorderRadius.circular(20),
+                                        boxShadow: [
+                                          // Light shadow on the top-left to simulate emboss effect
+                                          BoxShadow(
+                                            color:
+                                                Colors.white.withOpacity(0.5),
+                                            offset: const Offset(-4, -4),
+                                            blurRadius: 8,
+                                            spreadRadius: 1,
+                                          ),
+                                          // Dark shadow on the bottom-right to simulate emboss effect
+                                          BoxShadow(
+                                            color:
+                                                Colors.black.withOpacity(0.8),
+                                            offset: const Offset(4, 4),
+                                            blurRadius: 8,
+                                            spreadRadius: 1,
+                                          ),
+                                        ],
                                       ),
                                     ),
                                   ),
@@ -254,17 +262,28 @@ class _ChargeState extends State<Charge> {
                                         0.01 *
                                         MediaQuery.of(context).size.width *
                                         0.65,
-                                    child: Neumorphic(
-                                      style: NeumorphicStyle(
-                                        boxShape: NeumorphicBoxShape.roundRect(
-                                          BorderRadius.circular(20),
-                                        ),
-                                        depth: -9,
+                                    child: Container(
+                                      decoration: BoxDecoration(
                                         color: const Color.fromARGB(
                                             255, 157, 0, 255),
-                                        shadowLightColorEmboss:
-                                            Colors.white.withOpacity(0.8),
-                                        shadowDarkColorEmboss: Colors.black,
+                                        borderRadius: BorderRadius.circular(20),
+                                        boxShadow: [
+                                          // Light shadow on the top-left to simulate the emboss effect
+                                          BoxShadow(
+                                            color:
+                                                Colors.white.withOpacity(0.8),
+                                            offset: const Offset(-4, -4),
+                                            blurRadius: 8,
+                                            spreadRadius: 1,
+                                          ),
+                                          // Dark shadow on the bottom-right to simulate the emboss effect
+                                          const BoxShadow(
+                                            color: Colors.black,
+                                            offset: Offset(4, 4),
+                                            blurRadius: 8,
+                                            spreadRadius: 1,
+                                          ),
+                                        ],
                                       ),
                                     ),
                                   ),

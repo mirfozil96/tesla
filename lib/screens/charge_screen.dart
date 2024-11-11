@@ -1,10 +1,10 @@
 import 'dart:ui' as ui;
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:model_viewer_plus/model_viewer_plus.dart';
-import 'package:neumorphic_ui/neumorphic_ui.dart';
+
 import '../services/constants/svg_icon.dart';
 import '../views/components/top_button.dart';
-
 class ChargerScreen extends StatefulWidget {
   static const id = "/charge_screen";
   const ChargerScreen({Key? key}) : super(key: key);
@@ -271,16 +271,28 @@ class _ChargerScreenState extends State<ChargerScreen> {
                                     height: 20,
                                     width: MediaQuery.of(context).size.width *
                                         0.75,
-                                    child: Neumorphic(
-                                      style: NeumorphicStyle(
-                                        boxShape: NeumorphicBoxShape.roundRect(
-                                          BorderRadius.circular(20),
-                                        ),
-                                        depth: -9,
+                                    child: Container(
+                                      decoration: BoxDecoration(
                                         color: const Color(0xFF1C1D20),
-                                        shadowLightColorEmboss:
-                                            Colors.white.withOpacity(0.5),
-                                        shadowDarkColorEmboss: Colors.black,
+                                        borderRadius: BorderRadius.circular(20),
+                                        boxShadow: [
+                                          // Dark shadow on the bottom right
+                                          BoxShadow(
+                                            color:
+                                                Colors.black.withOpacity(0.7),
+                                            offset: const Offset(4, 4),
+                                            blurRadius: 5,
+                                            spreadRadius: 1,
+                                          ),
+                                          // Light shadow on the top left
+                                          BoxShadow(
+                                            color:
+                                                Colors.white.withOpacity(0.2),
+                                            offset: const Offset(-4, -4),
+                                            blurRadius: 5,
+                                            spreadRadius: 1,
+                                          ),
+                                        ],
                                       ),
                                     ),
                                   ),
@@ -295,17 +307,28 @@ class _ChargerScreenState extends State<ChargerScreen> {
                                         0.01 *
                                         MediaQuery.of(context).size.width *
                                         0.75,
-                                    child: Neumorphic(
-                                      style: NeumorphicStyle(
-                                        boxShape: NeumorphicBoxShape.roundRect(
-                                          BorderRadius.circular(20),
-                                        ),
-                                        depth: -9,
+                                    child: Container(
+                                      decoration: BoxDecoration(
                                         color: const Color.fromARGB(
                                             255, 157, 0, 255),
-                                        shadowLightColorEmboss:
-                                            Colors.white.withOpacity(0.8),
-                                        shadowDarkColorEmboss: Colors.black,
+                                        borderRadius: BorderRadius.circular(20),
+                                        boxShadow: [
+                                          // Light shadow on the top left to simulate emboss effect
+                                          BoxShadow(
+                                            color:
+                                                Colors.white.withOpacity(0.8),
+                                            offset: const Offset(-4, -4),
+                                            blurRadius: 10,
+                                            spreadRadius: 1,
+                                          ),
+                                          // Dark shadow on the bottom right to simulate emboss effect
+                                          const BoxShadow(
+                                            color: Colors.black,
+                                            offset: Offset(4, 4),
+                                            blurRadius: 10,
+                                            spreadRadius: 1,
+                                          ),
+                                        ],
                                       ),
                                     ),
                                   ),
@@ -345,15 +368,26 @@ class _ChargerScreenState extends State<ChargerScreen> {
                   height: height,
                   width: MediaQuery.of(context).size.width,
                   duration: const Duration(milliseconds: 250),
-                  child: Neumorphic(
-                    style: NeumorphicStyle(
-                      boxShape: NeumorphicBoxShape.roundRect(
-                          BorderRadius.circular(40)),
-                      depth: -10,
+                  child: Container(
+                    decoration: BoxDecoration(
                       color: const Color(0xFF24272C),
-                      shadowDarkColorEmboss: const Color.fromRGBO(0, 0, 0, 0.9),
-                      shadowLightColorEmboss:
-                          const Color.fromRGBO(255, 255, 255, 0.25),
+                      borderRadius: BorderRadius.circular(40),
+                      boxShadow: [
+                        // Dark shadow on the bottom right to simulate emboss effect
+                        BoxShadow(
+                          color: const Color.fromRGBO(0, 0, 0, 0.9),
+                          offset: const Offset(4, 4),
+                          blurRadius: 10,
+                          spreadRadius: 1,
+                        ),
+                        // Light shadow on the top left to simulate emboss effect
+                        BoxShadow(
+                          color: const Color.fromRGBO(255, 255, 255, 0.25),
+                          offset: const Offset(-4, -4),
+                          blurRadius: 10,
+                          spreadRadius: 1,
+                        ),
+                      ],
                     ),
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
@@ -370,28 +404,30 @@ class _ChargerScreenState extends State<ChargerScreen> {
                                 child: Text(
                                   'Charging Overview',
                                   style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.w600,
-                                      color: Color(0xffFFFFFF)),
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w600,
+                                    color: Color(0xffFFFFFF),
+                                  ),
                                 ),
                               ),
                               CustomButtonAppBar(
-                                  widget: height > 200
-                                      ? const Icon(
-                                          Icons.keyboard_arrow_up,
-                                          size: 35,
-                                          color: Color(0xFFEBEBF5),
-                                        )
-                                      : const Icon(
-                                          Icons.keyboard_arrow_down,
-                                          size: 35,
-                                          color: ui.Color.fromARGB(
-                                              255, 157, 0, 255),
-                                        ),
-                                  onPressed: func)
+                                widget: height > 200
+                                    ? const Icon(
+                                        Icons.keyboard_arrow_up,
+                                        size: 35,
+                                        color: Color(0xFFEBEBF5),
+                                      )
+                                    : const Icon(
+                                        Icons.keyboard_arrow_down,
+                                        size: 35,
+                                        color:
+                                            ui.Color.fromARGB(255, 157, 0, 255),
+                                      ),
+                                onPressed: func,
+                              ),
                             ],
                           ),
-                          (component)
+                          component
                               ? const SizedBox(
                                   height: 200,
                                   child: SingleChildScrollView(
